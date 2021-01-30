@@ -8,6 +8,16 @@ import register from "./controllers/register.js";
 import getForecast from "./controllers/getForecast.js";
 import save from "./controllers/save.js";
 
+const db = knex({
+  client: "pg",
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+});
+
 const app = express();
 
 app.use(express.json());
